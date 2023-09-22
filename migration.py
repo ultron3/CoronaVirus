@@ -7,7 +7,7 @@ mydb = mysql.connector.connect(
   database="datavirus"  # Specifica il database da utilizzare
 )
 
-mycursor = mydb.cursor()
+
 
 # Connessione al database PostgreSQL
 conn_postgresql = psycopg2.connect(
@@ -36,3 +36,9 @@ for riga in dati_mysql:
 
 # Fai il commit delle modifiche
 conn_postgresql.commit()
+
+cursor_mysql.close()
+conn_mysql.close()
+
+cursor_postgresql.close()
+conn_postgresql.close()
