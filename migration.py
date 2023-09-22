@@ -1,5 +1,5 @@
 import mysql.connector
-
+import psycopg2
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
@@ -8,9 +8,6 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-
-
-import psycopg2
 
 # Connessione al database PostgreSQL
 conn_postgresql = psycopg2.connect(
@@ -24,7 +21,7 @@ conn_postgresql = psycopg2.connect(
 
 cursor_mysql = conn_mysql.cursor()
 
-cursor_mysql.execute("SELECT * FROM SELECT * FROM virus")
+cursor_mysql.execute("SELECT *  FROM datavirus.virus")
 
 dati_mysql = cursor_mysql.fetchall()
 
