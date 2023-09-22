@@ -11,8 +11,8 @@ mycursor = mydb.cursor()
 
 # Connessione al database PostgreSQL
 conn_postgresql = psycopg2.connect(
-    database="nome_database_postgresql",
-    user="nome_utente_postgresql",
+    database="datavirus",
+    user="root",
     password="utente",
     host="localhost",
     port="5432"  # Porta predefinita di PostgreSQL
