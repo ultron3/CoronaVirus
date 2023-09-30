@@ -1,5 +1,6 @@
 import mysql.connector
 import psycopg2
+import mysql as conn_mysql
 
 mydb = mysql.connector.connect(
   host="localhost",

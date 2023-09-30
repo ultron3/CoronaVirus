@@ -1,6 +1,8 @@
 import mysql.connector
 from prettytable import PrettyTable
 import matplotlib.pyplot as plt
+from scipy import stats
+import numpy as np
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -17,9 +19,10 @@ while True:
     print("2. Insert")
     print("3. Delete")
     print("4.Plot")
-    print("5. Exit")
+    print("5. Linear Regression")
+    print("6. Exit")
     
-    choice = input("Enter your choice (1/2/3/4/5): ")
+    choice = input("Enter your choice (1/2/3/4/5/6): ")
 
     if choice == "1":
         mycursor.execute("SELECT * FROM virus")
@@ -72,8 +75,27 @@ while True:
         plt.legend()
         plt.tight_layout()
         plt.show()
+    
+    elif choice=="5":
+        mycursor.execute("SELECT state, positive,negative FROM virus")
+        myresult = mycursor.fetchall()
+        positives = [row[1] for row in myresult]
+        negatives = [row[2] for row in myresult]
 
-    elif choice == "5":
+        x = np.array(positives)
+        y = np.array(negatives)
+
+        slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
+
+        plt.scatter(x, y, label='Dati')
+        plt.plot(x, slope * x + intercept, color='r', label='Regressione Lineare')
+        plt.xlabel('Positives')
+        plt.ylabel('Negatives')
+        plt.title('Regressione Lineare tra Positives e Negatives')
+        plt.legend()
+        plt.show()
+
+    elif choice == "6":
         print("Exiting the program.")
         break
 
