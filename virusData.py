@@ -7,7 +7,7 @@ import numpy as np
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="telemedicina2123",
+  password="golfclub",
   database="datavirus"  # Specifica il database da utilizzare
 )
 
